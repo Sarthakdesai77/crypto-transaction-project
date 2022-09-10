@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 
 const priceSchema = new mongoose.Schema(
     {
-
         currency: {
             type: String,
             default: "INR",

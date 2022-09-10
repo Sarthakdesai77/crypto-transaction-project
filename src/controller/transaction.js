@@ -1,5 +1,5 @@
 const axios = require('axios')
-const transactionSchema=require('../models/transactionModel')
+const transactionSchema = require('../models/transactionModel')
 
 const getTransaction = async (req, res) => {
 
@@ -13,7 +13,7 @@ const getTransaction = async (req, res) => {
     let ans = await axios(options);
     let a = ans.data.result
 
-    await transactionSchema.create({address: address, transactionData:a})
+    await transactionSchema.create({ address: address, transactionData: a })
 
     res.send({ address: address, transaction: a })
 }

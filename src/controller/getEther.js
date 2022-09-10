@@ -13,10 +13,10 @@ const getEther = async (req, res) => {
 
     currPrice = await priceModel.create({ currentPrice: etherPrice.data.ethereum.inr })
 
-    return res.status(200).send({currPrice})
+    return res.status(200).send({ currPrice })
 }
 
-schedule.scheduleJob('*/10 * * * *',async()=>{
+schedule.scheduleJob('*/10 * * * *', async () => {
     let options = {
         method: "get",
         url: "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr"
@@ -24,7 +24,7 @@ schedule.scheduleJob('*/10 * * * *',async()=>{
 
     let etherPrice = await axios(options);
 
-    currPrice = await priceModel.updateOne({},{ currentPrice: etherPrice.data.ethereum.inr },{upsert:true})
+    currPrice = await priceModel.updateOne({}, { currentPrice: etherPrice.data.ethereum.inr }, { upsert: true })
 })
 
 module.exports.getEther = getEther

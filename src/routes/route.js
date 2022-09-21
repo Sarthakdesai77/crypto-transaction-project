@@ -2,8 +2,8 @@
 const express = require("express")
 const route = express.Router();
 const transaction = require("../controller/transaction");
-const getEther = require('../controller/getEther')
-const { getBalance } = require('../controller/getBalance')
+const getEther = require('../controller/etherController')
+const { getBalance } = require('../controller/balanceController')
 
 
 route.get("/getlog", transaction.getTransaction)

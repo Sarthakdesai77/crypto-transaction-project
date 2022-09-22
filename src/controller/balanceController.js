@@ -5,7 +5,8 @@ const web3 = new Web3('https://mainnet.infura.io/v3/b90c3e216f534aa59b0b7b5f347c
 
 const getBalance = async (req, res) => {
     try {
-        let address = req.body.address;
+        let address = req.params.address;
+        if (!web3.utils.isAddress(address)) return res.status(400).send({ status: false, message: 'please enter valid address' })
 
         let findAddress = await transactionModel.findOne({ address: address })
         if (!findAddress) return res.status(404).send({ status: false, message: 'the address entered is invalid' })

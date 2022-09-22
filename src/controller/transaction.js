@@ -4,8 +4,8 @@ const transactionModel = require('../models/transactionModel')
 const getTransaction = async (req, res) => {
 
     try {
-        let address = req.body.address;
-
+        let address = req.params.address;
+        console.log(address);
         if (!address) res.status(400).send({ status: false, message: 'Please provide the address' });
 
         let checkAddress = await transactionModel.findOne({ address: address });

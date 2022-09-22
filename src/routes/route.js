@@ -6,9 +6,9 @@ const getEther = require('../controller/etherController')
 const { getBalance } = require('../controller/balanceController')
 
 
-route.get("/getlog", transaction.getTransaction)
-route.get("/getprice", getEther.getEther)
-route.get('/getBalance', getBalance)
+route.get("/getTransaction/:address", transaction.getTransaction)
+route.get("/getCurrentPrice", getEther.getEther)
+route.get('/getBalance/:address', getBalance)
 
 
 module.exports = route

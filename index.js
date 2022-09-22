@@ -5,7 +5,6 @@ const route = require('./src/routes/route');
 const mongoose = require('mongoose');
 const app = express();
 
-
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +15,6 @@ mongoose.connect(clusterLink, {
 })
     .then(() => console.log("MongoDb is connected"))
     .catch(err => console.log(err))
-
 
 app.use('/', route);
 

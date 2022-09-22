@@ -18,5 +18,3 @@
 ### Task 3:
 1. Developed a "GET" API for a user where they gave their address as an input and got their current balance and current price of ether as an output.
 2. The balance was calculated from the transactions of the user. If the “from” address is that of the user, the “value” property gets deducted from the user’s balance. If the “to” address is that of the user, the “value” property gets added from the user’s balance. These transactions were the ones that were fetched in the previous tasks.
-
-

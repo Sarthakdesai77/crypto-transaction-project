@@ -1,17 +1,19 @@
 const axios = require('axios');
 const transactionModel = require('../models/transactionModel')
+const Web3 = require('web3');
+const web3 = new Web3('https://mainnet.infura.io/v3/b90c3e216f534aa59b0b7b5f347cded7')
 
 const getTransaction = async (req, res) => {
 
     try {
         let address = req.params.address;
-        console.log(address);
         if (!address) res.status(400).send({ status: false, message: 'Please provide the address' });
+        if (!web3.utils.isAddress(address)) return res.status(400).send({ status: false, message: 'please enter valid address' })
 
         let checkAddress = await transactionModel.findOne({ address: address });
-
         if (checkAddress) {
             return res.status(200).send({ status: true, message: 'transaction details', address: checkAddress.address, transaction: checkAddress.transactionData });
+            
         } else {
             let apiKey = process.env.API_KEY
             let options = {

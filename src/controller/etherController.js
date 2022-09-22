@@ -12,9 +12,9 @@ const getEther = async (req, res) => {
 
         let etherPrice = await axios(options);
 
-        currPrice = await priceModel.create({ currentPrice: etherPrice.data.ethereum.inr })
+        currentPrice = await priceModel.create({ currentPrice: etherPrice.data.ethereum.inr })
 
-        return res.status(200).send({ status: true, message: 'successfully created', currPrice })
+        return res.status(200).send({ status: true, message: 'successfully created', currentPrice })
     } catch (err) {
         return res.status(500).send({ status: false, message: err.message })
     }
